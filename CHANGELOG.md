@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2025/03/12
+### Changed
+- Change import from photo_view lib to media_list_view
+
 ## [1.0.1] - 2025/03/12
 ### Changed
 - Limited platform support to **Android** and **iOS** to avoid WASM compatibility issues.
