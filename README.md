@@ -1,6 +1,5 @@
 # Flutter Photo View 
-
-[![Tests status](https://img.shields.io/github/actions/workflow/status/bluefireteam/photo_view/ci.yml?branch=master)](https://github.com/bluefireteam/photo_view/actions) [![Pub](https://img.shields.io/pub/v/photo_view.svg?style=popout)](https://pub.dartlang.org/packages/photo_view) [![Chat](https://img.shields.io/discord/509714518008528896)](https://discord.gg/pxrBmy4)
+THIS LIBRARY IS BASED ON PHOTO_VIEW, ALLOWING YOU TO CREATE A PAGE VIEW THAT CAN CONTAIN IMAGES, GIFS, PDFS, DOCS, AND VIDEOS SIMULTANEOUSLY WHILE STILL ENABLING ZOOM FUNCTIONALITY FOR IMAGES AND GIFS WITHOUT DISPLAY ISSUES.
 
 A simple zoomable image/content widget for Flutter.
 
@@ -13,11 +12,11 @@ Even though being super simple to use, PhotoView is extremely customizable thoug
 
 ## Installation
 
-Add `photo_view` as a dependency in your pubspec.yaml file.
+Add `media_list_view` as a dependency in your pubspec.yaml file.
 
 Import Photo View:
 ```dart
-import 'package:photo_view/photo_view.dart';
+import 'package:media_list_view/media_list_view.dart';
 ```
 
 ## Docs & API
@@ -53,54 +52,49 @@ Read more about the `PhotoView` widget [here](https://pub.dartlang.org/documenta
 
 ## Gallery
 
-To show several images and let user change between them, use `PhotoViewGallery`.
+Show images and GIFs (zoomable) along with videos in a list, allowing users to navigate between them using PhotoViewGallery.
 
 Read more about the gallery [here](https://pub.dartlang.org/documentation/photo_view/latest/photo_view_gallery/PhotoViewGallery-class.html).
 
 ```dart
-import 'package:photo_view/photo_view.dart';
-import 'package:photo_view/photo_view_gallery.dart';
-// ...
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
 
-
-@override
-Widget build(BuildContext context) {
-  return Container(
-    child: PhotoViewGallery.builder(
-      scrollPhysics: const BouncingScrollPhysics(),
-      builder: (BuildContext context, int index) {
-        return PhotoViewGalleryPageOptions(
-          imageProvider: AssetImage(widget.galleryItems[index].image),
-          initialScale: PhotoViewComputedScale.contained * 0.8,
-          heroAttributes: PhotoViewHeroAttributes(tag: galleryItems[index].id),
-        );
-      },
-      itemCount: galleryItems.length,
-      loadingBuilder: (context, event) => Center(
-        child: Container(
-          width: 20.0,
-          height: 20.0,
-          child: CircularProgressIndicator(
-            value: event == null
-                ? 0
-                : event.cumulativeBytesLoaded / event.expectedTotalBytes,
+  @override
+  Widget build(BuildContext context) {
+    const img =
+        'https://cdn2.tuoitre.vn/thumb_w/480/471584752817336320/2024/7/29/tuoi-tre-cuoi-tram-hoat-hinh-01-1722239999290630742377.jpg';
+    const img2 =
+        'https://vn.portal-pokemon.com/play/resources/pokedex/img/pm/cf47f9fac4ed3037ff2a8ea83204e32aff8fb5f3.png';
+    const listIms = [img, img2];
+    const video =
+        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+    const listMedia = [
+      img,
+      img2,
+      video,
+      "https://shortpixel.com/blog/wp-content/uploads/2023/12/nyan-cat.gif"
+    ];
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: PhotoViewGallery.builder(
+            itemBuilder: (context, index) {
+              if (index == 2) {
+                return const VideoWidget(); //this is custom widget to show video not the from the lib
+              }
+              return PhotoAttachmentWidget(  //this is custom widget to show images not the from the lib
+                img: listMedia[index],
+              );
+            },
+            itemCount: listMedia.length,
           ),
         ),
       ),
-      backgroundDecoration: widget.backgroundDecoration,
-      pageController: widget.pageController,
-      onPageChanged: onPageChanged,
-    )
-  );
+    );
+  }
 }
 ```
-
-Gallery sample in the example app: 
-
-![In action](https://user-images.githubusercontent.com/6718144/56463769-e93d1880-63b0-11e9-8586-55827c95b89c.gif)
-
-See the code [here](https://github.com/bluefireteam/photo_view/blob/master/example/lib/screens/examples/gallery/gallery_example.dart).
-
 
 
 ## Usage with controllers
@@ -124,10 +118,5 @@ In the example app, we can see what can be achieved with controllers:
 | **Part of the screen** | **Custom child** |
 | ![In action](https://user-images.githubusercontent.com/6718144/56464215-d92a3680-63ba-11e9-9c37-d4796e992123.gif) | ![In action](https://user-images.githubusercontent.com/6718144/56464225-1b537800-63bb-11e9-9c5b-ea8632c99969.gif) |
 
-## Support us
-
-You can support us by becoming a patron on Patreon, any support is much appreciated.
-
-[![Patreon](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/fireslime)
 
 
