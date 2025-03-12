@@ -29,20 +29,6 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          // child: PageView.builder(
-          //   controller: controller,
-          //   itemCount: 4,
-          //   itemBuilder: (context, index) {
-          //     if (index == 2) {
-          //       return const VideoWidget();
-          //     } else if (index == 3) {
-          //       return const Text("final page");
-          //     }
-          //     return PhotoAttachmentWidget(
-          //       img: listMedia[index],
-          //     );
-          //   },
-          // ),
           child: PhotoViewGallery.builder(
             itemBuilder: (context, index) {
               if (index == 2) {
