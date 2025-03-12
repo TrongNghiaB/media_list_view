@@ -139,8 +139,9 @@ class PhotoViewGestureRecognizer extends ScaleGestureRecognizer {
   void _updateDistances() {
     final int count = _pointerLocations.keys.length;
     Offset focalPoint = Offset.zero;
-    for (int pointer in _pointerLocations.keys)
+    for (int pointer in _pointerLocations.keys) {
       focalPoint += _pointerLocations[pointer]!;
+    }
     _currentFocalPoint =
         count > 0 ? focalPoint / count.toDouble() : Offset.zero;
   }

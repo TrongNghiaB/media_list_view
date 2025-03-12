@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3] - 2025/03/12
+### Changed
+- Statements in a for should be enclosed in a block.
+
 ## [1.0.2] - 2025/03/12
 ### Changed
 - Change import from photo_view lib to media_list_view
