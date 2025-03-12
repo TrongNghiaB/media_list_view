@@ -1,13 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:photo_view/photo_view.dart'
-    show
-        PhotoViewControllerBase,
-        PhotoViewScaleState,
-        PhotoViewScaleStateController,
-        ScaleStateCycle;
-import 'package:photo_view/src/core/photo_view_core.dart';
-import 'package:photo_view/src/photo_view_scale_state.dart';
-import 'package:photo_view/src/utils/photo_view_utils.dart';
+import 'package:media_list_view/photo_view.dart';
+import 'package:media_list_view/src/core/photo_view_core.dart';
+import 'package:media_list_view/src/utils/photo_view_utils.dart';
 
 /// A  class to hold internal layout logic to sync both controller states
 ///

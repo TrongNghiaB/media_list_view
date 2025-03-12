@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
-
-import 'photo_view_hit_corners.dart';
+import 'package:media_list_view/src/core/photo_view_hit_corners.dart';
 
 class PhotoViewGestureDetector extends StatelessWidget {
   const PhotoViewGestureDetector({
